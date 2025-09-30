@@ -3,6 +3,13 @@ import { useState } from 'react';
 export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(task.text);
+  const [completed, setCompleted] = useState(false);
+  const handleComplete = () => {
+    setCompleted(!completed);
+    if (task.selected) {
+      onToggle(task.id);
+    }
+  };
 
   const handleCheckbox = () => {
     onToggle(task.id);
@@ -35,7 +42,11 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
     <li
       className={
         `flex items-center justify-between gap-4 p-3 rounded-lg border transition ` +
-        (task.selected ? 'bg-[#daa520] border-yellow-700' : 'bg-white')
+        (completed
+          ? 'bg-green-400 border-green-700'
+          : task.selected
+            ? 'bg-[#daa520] border-yellow-700'
+            : 'bg-white')
       }
     >
       <div className="flex items-center gap-3">
@@ -69,7 +80,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
             </div>
           ) : (
             <>
-              <p className="font-medium text-gray-900">{task.text}</p>
+              <p className={`font-medium text-gray-900 ${completed ? 'line-through' : ''}`}>{task.text}</p>
               <p className="text-xs text-gray-500">Autor: {task.author}</p>
             </>
           )}
@@ -87,6 +98,11 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
             className="px-2 py-1 rounded bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
             title="Eliminar tarea"
           >Eliminar</button>
+          <button
+            onClick={handleComplete}
+            className={`px-2 py-1 rounded text-xs font-medium transition ${completed ? 'bg-green-700 text-white' : 'bg-green-100 text-green-700 hover:bg-green-200'}`}
+            title="Marcar como completada"
+          >{completed ? 'Completada' : 'Completar'}</button>
         </div>
       )}
     </li>
