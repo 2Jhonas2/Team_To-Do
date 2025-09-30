@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 export const AuthContext = createContext();
 
 const USERS = [
-  { id: 1, username: "admin", password: "admin" },
-  { id: 2, username: "Jhon", password: "Jhon123" },
-  { id: 3, username: "Juan", password: "Juan123" }
+  { id: 1, name: "Administrador", username: "admin", password: "admin" },
+  { id: 2, name: "Jhon", username: "Jhon", password: "Jhon123" },
+  { id: 3, name: "Juan", username: "Juan", password: "Juan123" }
 ];
 
 export const AuthProvider = ({ children }) => {

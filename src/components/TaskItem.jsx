@@ -52,9 +52,10 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
                 type="text"
                 value={draft}
                 onChange={e => setDraft(e.target.value)}
-                className="px-2 py-1 border rounded focus:ring-2 focus:ring-blue-500 text-sm"
+                className="font-medium text-gray-900"
                 autoFocus
               />
+              <p className="text-xs text-gray-500">Autor: {task.author}</p>
               <button
                 onClick={handleSave}
                 className="px-2 py-1 rounded bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 transition"
@@ -69,7 +70,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }) {
           ) : (
             <>
               <p className="font-medium text-gray-900">{task.text}</p>
-              <p className="text-xs text-gray-500">Autor: {task.name}</p>
+              <p className="text-xs text-gray-500">Autor: {task.author}</p>
             </>
           )}
         </div>

@@ -9,7 +9,7 @@ export default function TaskForm({ currentUser, onAdd }) {
     if (!value) return
     onAdd({
       text: value,
-      author: currentUser?.name ?? 'Anónimo',
+      author: currentUser?.name ?? 'Juan',
     })
     setText('')
   }
