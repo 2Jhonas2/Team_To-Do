@@ -31,15 +31,28 @@ export default function App() {
       completed: false,
       createdAt: new Date().toISOString(),
       userId: user?.id ?? null,
-    }
-    setTasks((prev) => [newTask, ...(prev ?? [])])
-  }
+    };
+    setTasks((prev) => [newTask, ...(prev ?? [])]);
+  };
 
+  // Toggle selección individual
   const handleToggle = (id) => {
     setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    )
-  }
+      prev.map((t) =>
+        t.id === id ? { ...t, selected: !t.selected } : t
+      )
+    );
+  };
+
+  const handleEdit = (id, newText) => {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, text: newText } : t))
+    );
+  };
+
+  const handleDelete = (id) => {
+    setTasks((prev) => prev.filter((t) => t.id !== id));
+  };
 
   const filtered = useMemo(() => {
     if (!Array.isArray(tasks)) return []
@@ -89,7 +102,41 @@ export default function App() {
 
       <section className="bg-white rounded-xl border p-4">
         <h2 className="text-lg font-semibold mb-3">Tareas</h2>
-        <TaskList tasks={filtered} onToggle={handleToggle} />
+        {/* Selector global y botón eliminar */}
+        {filtered.length > 0 && (
+          <div className="flex items-center gap-4 mb-4">
+            <input
+              type="checkbox"
+              checked={filtered.every(t => t.selected)}
+              onChange={e => {
+                const checked = e.target.checked;
+                setTasks(prev =>
+                  prev.map(t =>
+                    filtered.some(f => f.id === t.id)
+                      ? { ...t, selected: checked }
+                      : t
+                  )
+                );
+              }}
+              className="size-5 accent-blue-600"
+            />
+            <span className="text-sm">Seleccionar todas</span>
+            {filtered.some(t => t.selected) && (
+              <button
+                className="px-3 py-1 rounded bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
+                onClick={() => {
+                  setTasks(prev => prev.filter(t => !t.selected));
+                }}
+              >Eliminar seleccionadas</button>
+            )}
+          </div>
+        )}
+        <TaskList
+          tasks={filtered}
+          onToggle={handleToggle}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </section>
 
       <footer className="mt-8 text-center text-xs text-gray-500">

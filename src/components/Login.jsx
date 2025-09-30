@@ -13,7 +13,7 @@ export default function Login({ onLogin }) {
       saveUser({ id: found.id, name: found.name, username: found.username })
       onLogin({ id: found.id, name: found.name, username: found.username })
     } else {
-      setError('Credenciales inválidas. Usa ana/ana123 o luis/luis123')
+      setError('Credenciales inválidas. Usa Jhon/Jhon123 o Juan/Juan123')
     }
   }
 

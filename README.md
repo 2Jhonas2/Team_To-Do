@@ -67,6 +67,8 @@ team-todo/
 1. **Instalar dependencias**
    ```bash
    npm install
+
+   npm i -D tailwindcss @tailwindcss/postcss @tailwindcss/cli
    ```
 
 2. **Ambiente recomendado**
