@@ -1,24 +1,6 @@
 {
   "tasks": [
     {
-      "id": "934e",
-      "text": "dghgsdf",
-      "author": "Juan",
-      "completed": false,
-      "createdAt": "2025-09-30T13:11:35.308Z",
-      "userId": 3,
-      "selected": false
-    },
-    {
-      "id": "77fb",
-      "text": "asdfsf",
-      "author": "Juan",
-      "completed": false,
-      "createdAt": "2025-09-30T13:15:02.925Z",
-      "userId": 3,
-      "selected": false
-    },
-    {
       "id": "1b77",
       "text": "jhonas",
       "author": "Juan",
