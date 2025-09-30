@@ -219,6 +219,7 @@ MIT — úsalo libremente para tu aprendizaje y portafolio.
 ## 👥Autores
 ´´´
 Jhon Paez
+
 Juan Rodriguez
 ´´´
 
