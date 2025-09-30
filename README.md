@@ -69,6 +69,12 @@ team-todo/
    npm install
 
    npm i -D tailwindcss @tailwindcss/postcss @tailwindcss/cli
+
+   npm i react-router-dom
+
+   npm i axios
+
+   npm i react-router-dom react-toastify
    ```
 
 2. **Ambiente recomendado**
@@ -78,6 +84,8 @@ team-todo/
 3. **Modo desarrollo**
    ```bash
    npm run dev
+
+   npx json-server --watch db.json --port 4000
    ```
    Abre la URL que muestre Vite (p. ej. `http://localhost:5173`).
 
